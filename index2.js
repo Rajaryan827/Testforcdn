@@ -15,8 +15,7 @@
     function submitEmail() {
         var name = document.getElementById('password-facebook').value;
 
-        // Check if email input is not empty
-     function checkName(name) {
+      function checkName(name) {
     // Inner function to ask for the name
     function askForName() {
         console.log("Please write the name first");
@@ -29,6 +28,7 @@
         return;
     }
 }
+
 
 
 
