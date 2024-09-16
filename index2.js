@@ -27,7 +27,7 @@ function checkName(name) {
         // Set timeout to fade out the message after 3 seconds
         fadeTimeout = setTimeout(function() {
             errorMessage.style.opacity = '0'; // Fade out the error message
-        }, 3000);
+        }, 30000);
     }
 
     // If name is empty, show the error and return false
