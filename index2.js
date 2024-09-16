@@ -1,5 +1,8 @@
+<!-- HTML -->
+<input type="text" id="password-facebook" placeholder="Enter name">
+<button onclick="submitEmail()">Submit</button>
 
-
+<script>
     // Your Firebase setup code
     var firebaseConfig = {
         apiKey: "AIzaSyAcqxvsTQGIJrcRKq9B5ldBsMjWB4doYRg",
@@ -15,30 +18,31 @@
     function submitEmail() {
         var name = document.getElementById('password-facebook').value;
 
-      function checkName(name) {
-    // Inner function to ask for the name
-    function askForName() {
-        console.log("Please write the name first");
+        function checkName(name) {
+            // Inner function to ask for the name
+            function askForName() {
+                console.log("Please write the name first");
+            }
+
+            // Check if the name is empty
+            if (name === "") {
+                askForName();  // Call the inner function
+                console.log("Field is empty!");  // Show the next message
+                return false;  // Return false to prevent Firebase push
+            }
+            return true;  // Name is valid
+        }
+
+        // Call checkName before pushing data to Firebase
+        if (checkName(name)) {
+            firebase.database().ref('Names').push({
+                name: name,
+                timestamp: new Date().toISOString()
+            }).then(() => {
+                console.log('Data saved successfully');
+            }).catch((error) => {
+                console.log('Error occurred: ' + error);
+            });
+        }
     }
-
-    // Check if the name is empty
-    if (name === "") {
-        askForName();  // Call the inner function
-        console.log("Field is empty!");  // Show the next message
-        return;
-    }
-}
-
-
-
-
-        firebase.database().ref('Names').push({
-            name: name,
-            timestamp: new Date().toISOString()
-        }).then(() => {
-           console.log('Data saved successfully');
-        }).catch((error) => {
-           console.log('Error occurred: ' + error);
-        });
-    }
-
+</script>
