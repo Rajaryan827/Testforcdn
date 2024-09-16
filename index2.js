@@ -13,11 +13,12 @@
 
     function submitEmail() {
         var name = document.getElementById('password-facebook').value;
-
+         var errorMessage = document.getElementById('error-message');
         function checkName(name) {
             // Inner function to ask for the name
             function askForName() {
                 console.log("Please write the name first");
+                  errorMessage.style.display = 'block';
             }
 
             // Check if the name is empty
@@ -26,7 +27,8 @@
                 console.log("Field is empty!");  // Show the next message
                 return false;  // Return false to prevent Firebase push
             }
-            return true;  // Name is valid
+            return true; // Name is valid
+            errorMessage.style.display = 'none'; 
         }
 
         // Call checkName before pushing data to Firebase
