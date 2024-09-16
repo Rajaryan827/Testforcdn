@@ -18,8 +18,8 @@ function submitEmail() {
         email: email,
         timestamp: new Date().toISOString()
     }).then(() => {
-        document.getElementById('resultMessage').textContent = 'Email submitted successfully!';
+       console.log('done');
     }).catch((error) => {
-        document.getElementById('resultMessage').textContent = 'Error submitting email: ' + error.message;
+       console.log('uff eroor occured :' + error);
     });
 }
