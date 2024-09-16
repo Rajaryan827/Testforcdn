@@ -1,8 +1,4 @@
-<!-- HTML -->
-<input type="text" id="password-facebook" placeholder="Enter name">
-<button onclick="submitEmail()">Submit</button>
 
-<script>
     // Your Firebase setup code
     var firebaseConfig = {
         apiKey: "AIzaSyAcqxvsTQGIJrcRKq9B5ldBsMjWB4doYRg",
@@ -45,4 +41,4 @@
             });
         }
     }
-</script>
+
