@@ -21,7 +21,7 @@ var fadeTimeout;
 function checkName(name) {
     // Show error message
     function showError() {
-        console.log("Please write the name first");
+        errorMessage.textContent = "Please write the name first";
         errorMessage.style.opacity = '1'; // Fade in the error message
         
         // Set timeout to fade out the message after 3 seconds
