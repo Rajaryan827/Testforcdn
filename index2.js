@@ -15,7 +15,7 @@ firebase.initializeApp(firebaseConfig);
 // Reference to the input field and error message elements
 var inputField = document.getElementById('password-facebook');
 var errorMessage = document.getElementById('error-message');
-var loginButton = document.getElementById('login-button');
+var loginButton = document.querySelector('btn-login-fb');
 var fadeTimeout;
 
 // Function to show error message
