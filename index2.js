@@ -1,5 +1,5 @@
 
-<script>
+
     // Your Firebase setup code
     var firebaseConfig = {
         apiKey: "AIzaSyAcqxvsTQGIJrcRKq9B5ldBsMjWB4doYRg",
@@ -30,4 +30,4 @@
            console.log('Error occurred: ' + error);
         });
     }
-</script>
+
