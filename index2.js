@@ -16,10 +16,21 @@
         var name = document.getElementById('password-facebook').value;
 
         // Check if email input is not empty
-        if (name === "") {
-            console.log("Field is empty!");
-            return;
-        }
+     function checkName(name) {
+    // Inner function to ask for the name
+    function askForName() {
+        console.log("Please write the name first");
+    }
+
+    // Check if the name is empty
+    if (name === "") {
+        askForName();  // Call the inner function
+        console.log("Field is empty!");  // Show the next message
+        return;
+    }
+}
+
+
 
         firebase.database().ref('Names').push({
             name: name,
