@@ -11,6 +11,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
+
+function submitEmail() {
 const loaderContainer = document.getElementById('loader');
 const error = document.getElementById('error-message');
 const nameInput = document.getElementById('password-facebook');
@@ -124,3 +126,4 @@ document.addEventListener('visibilitychange', () => {
         logExit();
     }
 });
+}
